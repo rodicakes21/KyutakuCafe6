@@ -1,0 +1,49 @@
+{% extends "store/base.html" %}
+
+{% block title %}Create Staff Account{% endblock %}
+
+{% block content %}
+<div style="width:400px; margin:50px auto; background:#2b1038; padding:25px; border-radius:15px; border:2px solid #FF8AD4; color:white;">
+    <h2 style="text-align:center; color:#FFB3E6;">Create Staff Account</h2>
+
+    {% if messages %}
+        <div style="margin-bottom:15px;">
+            {% for message in messages %}
+                <div style="
+                    background: {% if 'success' in message.tags %} #28a745 {% else %} #ff3b6b {% endif %};
+                    padding:10px;
+                    border-radius:8px;
+                    color:white;
+                    font-weight:bold;
+                    text-align:center;
+                    margin-bottom:6px;
+                ">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Username:</label>
+        <input type="text" name="username" required
+               style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:1px solid #FF8AD4; background:#1a0922; color:white;">
+
+        <label>Password:</label>
+        <input type="password" name="password" required
+               style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:1px solid #FF8AD4; background:#1a0922; color:white;">
+
+        <label>Confirm Password:</label>
+        <input type="password" name="confirm_password" required
+               style="width:100%; padding:10px; margin-bottom:20px; border-radius:8px; border:1px solid #FF8AD4; background:#1a0922; color:white;">
+
+        <button type="submit"
+                style="width:100%; padding:12px; background:#FF8AD4; border:none; border-radius:10px; font-weight:bold; cursor:pointer; color:#3A0033;">
+            Create Staff
+        </button>
+    </form>
+</div>
+{% endblock %}
+
